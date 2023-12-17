@@ -1,0 +1,32 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-signin: #12002b;
+  --font: Avenir, Helvetica, Arial, sans-serif;
+}
+
+input:-internal-autofill-selected {
+  background-color: none !important;
+}
+
+#root {
+  font-family: var(--font);
+  max-width: 1950px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  display: flex;
+  flex-direction: column;
+}
+
+ul {
+  list-style: none;
+}
+

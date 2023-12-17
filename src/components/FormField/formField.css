@@ -1,0 +1,57 @@
+.field-container {
+  position: relative;
+  margin-top: 30px;
+}
+
+.field-container:first-child, .field-container.street, .field-container.department {
+  margin-top: 0;
+}
+
+.field-container.department {
+  margin-top: 10px;
+}
+
+.label {
+  font-size: 16px;
+  color: #333;
+  position: absolute;
+  top: 10px;
+  left: 8px;
+  padding: 0 5px;
+  pointer-events: none;
+  transition: 0.25s;
+}
+
+.input {
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+  outline: none;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input::placeholder {
+  visibility: hidden;
+}
+
+.not-empty,
+.input:focus + .label,
+.input[type="date"] + .label {
+  top: -10px;
+  background-color: #fff;
+  font-size: 14px;
+}
+
+.select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  color: #333;
+}

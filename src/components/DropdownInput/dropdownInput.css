@@ -1,0 +1,39 @@
+select.dropdown {
+  height: auto;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+  outline: none;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #333;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url("../../assets/icons/arrow.svg") no-repeat right center
+    content-box;
+  cursor: pointer;
+}
+
+select.dropdown#department {
+  margin-bottom: 20px;
+}
+
+.label-dropdown {
+  color: #333;
+  display: block;
+  text-align: left;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.label-dropdown[for="state"] {
+  position: absolute;
+  left: 8px;
+  padding: 0 5px;
+  top: -10px;
+  background-color: #fff;
+  font-size: 14px;
+}
