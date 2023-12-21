@@ -1,3 +1,9 @@
+/**
+ * Fonction de validation du formulaire d'employé.
+ * @param {object} employeeDatas - Les données de l'employé à valider.
+ * @returns {object} - Les erreurs de validation du formulaire.
+ */
+
 export function validationForm(employeeDatas) {
   const errors = {};
 
@@ -27,17 +33,19 @@ export function validationForm(employeeDatas) {
   } else if (birthDate >= now) {
     errors.dateOfBirth = "La date de naissance est invalide.";
   } else if (birthDate.getFullYear() < 1923) {
-    errors.dateOfBirth = "La date de naissance ne peut pas être antérieure à 1923.";
+    errors.dateOfBirth =
+      "La date de naissance ne peut pas être antérieure à 1923.";
+  } else if (majeur === false) {
+    errors.dateOfBirth = "L'employé doit être majeur (au moins 18 ans).";
   }
 
   if (isNaN(startDate)) {
     errors.startDate = "La date de début est requise.";
   } else if (startDate > now) {
     errors.startDate = "La date de début est invalide.";
-  } else if (majeur === false) {
-    errors.startDate = "L'employé doit être majeur (au moins 18 ans).";
   } else if (startDate.getFullYear() < birthDate.getFullYear()) {
-    errors.startDate = "La date de début ne peut pas être antérieure à la date de naissance.";
+    errors.startDate =
+      "La date de début ne peut pas être antérieure à la date de naissance.";
   }
 
   if (employeeDatas.street === "") {
@@ -61,6 +69,11 @@ export function validationForm(employeeDatas) {
   return errors;
 }
 
+/**
+ * Fonction pour gérer la pression sur une touche avec filtrage optionnel pour les caractères numériques.
+ * @param {object} e - L'événement de pression sur la touche.
+ * @param {boolean} isNumeric - Indique si seule l'entrée numérique est autorisée.
+ */
 export function handleKeyPress(e, isNumeric) {
   const charCode = e.which ? e.which : e.keyCode;
   if (isNumeric) {

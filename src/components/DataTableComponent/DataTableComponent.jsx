@@ -1,18 +1,26 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 import { useState } from "react";
 import DataTable from "react-data-table-component";
 import SearchInput from "../SearchInput/SearchInput";
 import { formatDate } from "../../utils/formatDate";
 
+// Définition des types des props attendues par le composant
+DataTableComponent.propTypes = {
+  // Données à afficher dans le tableau
+  data: PropTypes.array.isRequired,
+};
+
 export default function DataTableComponent({ data }) {
-  // console.log(data);
+
+  // État pour gérer les enregistrements
   const [records, setRecords] = useState(data);
 
+  // Fonction pour gérer le filtrage des données
   function handleFilter(event) {
     const searchValue = event.target.value;
-    console.log(searchValue);
+    // console.log(searchValue);
     const newData = data.filter((item) => {
-      console.log(item);
+      // console.log(item);
       return (
         item.firstName.toLowerCase().includes(searchValue) ||
         item.lastName.toLowerCase().includes(searchValue) ||
@@ -28,6 +36,7 @@ export default function DataTableComponent({ data }) {
     setRecords(newData);
   }
 
+  // Définition des colonnes du tableau
   const columns = [
     {
       name: "First Name",
@@ -79,6 +88,7 @@ export default function DataTableComponent({ data }) {
     },
   ];
 
+  // Options de pagination
   const paginationComponentOptions = {
     rowsPerPageText: "Show",
     rangeSeparatorText: "de",
@@ -86,6 +96,7 @@ export default function DataTableComponent({ data }) {
     selectAllRowsItemText: "Todos",
   };
 
+  // Styles personnalisés pour le tableau
   const customStyles = {
     headCells: {
       style: {

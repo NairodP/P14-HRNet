@@ -11,14 +11,17 @@ import { Modal } from "@nairodp/modal";
 export default function CreateEmployeeForm() {
   const [openModal, setOpenModal] = useState(false);
 
+  // Fonction pour sauvegarder les données dans le Local Storage
   function saveToLocalStorage(data) {
     const existingData = JSON.parse(localStorage.getItem("employeeData")) || [];
     existingData.push(data);
     localStorage.setItem("employeeData", JSON.stringify(existingData));
   }
 
+  // Contexte pour gérer les employés
   const { dispatch } = useEmployeeContext();
 
+  // État pour gérer les données du formulaire
   const [employeeDatas, setEmployeeDatas] = useState({
     firstName: "",
     lastName: "",
@@ -31,8 +34,10 @@ export default function CreateEmployeeForm() {
     department: "Sales",
   });
 
+  // État pour gérer les erreurs du formulaire
   const [errors, setErrors] = useState({});
 
+  // Fonction pour gérer les changements dans les champs de saisie
   function handleInput(e) {
     const field = e.target.id;
     const value = e.target.value;
@@ -40,13 +45,17 @@ export default function CreateEmployeeForm() {
     setEmployeeDatas(newObj);
   }
 
+  // Fonction pour sauvegarder l'employé
   const saveEmployee = (e) => {
     e.preventDefault();
+    // Validation des données du formulaire
     const errors = validationForm(employeeDatas);
+    // console.log(errors);
 
     // Vérifiez s'il y a des erreurs
     if (Object.keys(errors).length === 0) {
-      console.log("Pas d'erreur !");
+      // console.log("Pas d'erreur !");
+      // Pas d'erreur, ouverture de la modal de succès
       setOpenModal(true);
 
       // Appliquer les transformations sur les données de l'employé
@@ -58,6 +67,7 @@ export default function CreateEmployeeForm() {
       // Envoyez les données uniquement s'il n'y a pas d'erreur
       dispatch({ type: "ADD_EMPLOYEE", payload: transformedData });
 
+      // Réinitialisez les erreurs
       setErrors(errors);
       // Réinitialisez les données de l'employé
       setEmployeeDatas({
@@ -72,8 +82,9 @@ export default function CreateEmployeeForm() {
         department: "Sales",
       });
     } else {
-      console.log("Il y a des erreurs quelque part...");
-      setErrors(errors); // Mettez à jour les erreurs dans l'état local
+      // console.log("Il y a des erreurs quelque part...");
+      // Il y a des erreurs, mise à jour des erreurs dans l'état local
+      setErrors(errors);
     }
   };
 
