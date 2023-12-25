@@ -10,10 +10,11 @@ La base du code initial était constituée de plugins jQuery, ce qui entraînait
 
 Pour le rendu visuel, j'ai apporté des modifications pour moderniser l'interface sans altérer sa fonctionnalité. Le but était de rendre l'application visuellement plus agréable.
 
-## Composant Personnalisé en attente d'implémentation d'une librairy
+## Composant Personnalisé / Plugin Personnalisé
 
-L'entièreté des composants hormis "DataTableComponent" ont été réalisé par moi-même.
-L'un des composants gère actuellement la fenêtre modale de confirmation lors de l'enregistrement d'un nouvel employé, remplaçant ainsi le plugin jQuery initial "jquery-modal". Ce plugin va entièrement être converti en React et sera, une fois terminé, utilisé dans le projet. La version React de celui-ci sera disponible sur NPM Package une fois terminé.
+L'entièreté des composants hormis "DataTableComponent", plugin gérant l'affichage de données sous forme de tableau, ont été réalisés par moi-même.
+Le plugin @nairodp/modal écrit en React/TypeScript est utilisé pour gérer l'affichage de fenêtres Modales.
+Ce dernier offre une solution simple d'implémentation de Modales avec l'utilisation de props.
 
 ## Contribution
 
