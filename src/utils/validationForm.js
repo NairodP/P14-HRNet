@@ -14,7 +14,6 @@ export function validationForm(employeeDatas) {
   const streetRegex = /^[0-9A-Za-zÀ-ÖØ-öø-ÿ\s.,-]+$/;
   const cityRegex = /^[A-Za-z\s-]+/;
   const zipCodeRegex = /^[0-9]{5}$/;
-  const majeur = now.getFullYear() - birthDate.getFullYear() >= 18;
 
   if (employeeDatas.firstName === "") {
     errors.firstName = "Le prénom est requis.";
@@ -35,7 +34,7 @@ export function validationForm(employeeDatas) {
   } else if (birthDate.getFullYear() < 1923) {
     errors.dateOfBirth =
       "La date de naissance ne peut pas être antérieure à 1923.";
-  } else if (majeur === false) {
+  } else if (startDate.getFullYear() - birthDate.getFullYear() < 18) {
     errors.dateOfBirth = "L'employé doit être majeur (au moins 18 ans).";
   }
 
